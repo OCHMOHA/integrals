@@ -11,14 +11,17 @@ def simpson_rule(func, a, b, nseg):
         total += 2 * func(a + i * dx)
     return total * dx / 3
 
+a_const = 1
+b_const = 2
+
 def func(x):
-    return exp(-x) * cos(x)
+    return exp(-a_const * x) * cos(b_const * x)
 
 print("Using Simpson's method")
-print("Integrating function: f(x) = e^(-x) * cos(x)")
+print("Integrating function: f(x) = exp(-a*x) * cos(b*x), a = 1, b = 2")
 
 a = 0
-b = 100
+b = 50  
 nseg = 2
 eps = 1e-7
 
@@ -30,4 +33,5 @@ while abs(int_1 - int_2) > eps:
     int_1 = simpson_rule(func, a, b, nseg)
     int_2 = simpson_rule(func, a, b, nseg * 2)
 
-print("\nAnswer: I =", int_2, "\nNumber of segments:", nseg * 2)
+print("\nAnswer: I =", int_2)
+print("Number of segments:", nseg * 2)
