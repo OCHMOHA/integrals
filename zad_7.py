@@ -1,5 +1,6 @@
 from math import sqrt
 
+# Simpson's rule function
 def simpson_rule(func, a, b, nseg):
     if nseg % 2 == 1:
         nseg += 1
@@ -11,6 +12,7 @@ def simpson_rule(func, a, b, nseg):
         total += 2 * func(a + i * dx)
     return total * dx / 3
 
+# Define the function
 def func(x):
     return x**5 / sqrt(4 - x**2)
 
@@ -18,7 +20,7 @@ print("Using Simpson's method")
 print("Integrating function: f(x) = x^5 / sqrt(4 - x^2)")
 
 a = 0
-b = 2 - 1e-6
+b = 1.999  # safer upper limit
 nseg = 2
 eps = 1e-7
 
@@ -30,4 +32,5 @@ while abs(int_1 - int_2) > eps:
     int_1 = simpson_rule(func, a, b, nseg)
     int_2 = simpson_rule(func, a, b, nseg * 2)
 
-print("\nAnswer: I =", int_2, "\nNumber of segments:", nseg * 2)
+print("\nAnswer: I =", int_2)
+print("Number of segments:", nseg * 2)
