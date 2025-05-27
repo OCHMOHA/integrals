@@ -12,13 +12,13 @@ def simpson_rule(func, a, b, nseg):
     return total * dx / 3
 
 def func(x):
-    return log(x) / (x**2)
+    return log(x) / x**2
 
 print("Using Simpson's method")
 print("Integrating function: f(x) = ln(x) / x^2")
 
 a = 1
-b = 1000
+b = 1000  
 nseg = 2
 eps = 1e-7
 
@@ -30,4 +30,5 @@ while abs(int_1 - int_2) > eps:
     int_1 = simpson_rule(func, a, b, nseg)
     int_2 = simpson_rule(func, a, b, nseg * 2)
 
-print("\nAnswer: I =", int_2, "\nNumber of segments:", nseg * 2)
+print("\nAnswer: I =", int_2)
+print("Number of segments:", nseg * 2)
